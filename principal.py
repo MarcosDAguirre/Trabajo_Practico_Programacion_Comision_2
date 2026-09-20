@@ -1,5 +1,9 @@
+import sys
+
+datos_SMN = sys.argv[1]
+
 salida = {}              # fecha y hora en datetime
-with open ('estado_tiempo20260910.txt', encoding = 'cp1252') as f:
+with open (datos_SMN, encoding = 'cp1252') as f:
     for i in f:
         linea = i.split(';')
         print (linea)
