@@ -1,15 +1,16 @@
 
-def salida_f4(dato):
-	salida = {}
-	contador = 0
-	with open (dato, encoding = 'cp1252') as f:
-		for i in f:
-			linea = i.split(';')
-			clave = linea[0].strip()  # clave es una ciudad.
-			valor_s_termica = linea[6]
-			try:
-				float(valor_s_termica)
-				contador += 1
-			except (ValueError):
-				pass
-	return contador
+def salida_f4(diccionario):
+    contador = 0
+    ciudades_completas = []
+    for clave,valor in diccionario.items():
+        valor_ST = valor['Sensación térmica']
+        try:
+                        float(valor_ST)
+                        contador += 1
+                        ciudades_completas.append(clave)
+        except(ValueError):
+                pass
+    return {'Ciudades_completas':ciudades_completas,'Cantidad_ciudades_completas':contador}
+          
+             
+# Devuelve la cantidad de ciudades sin ningún dato faltante.
