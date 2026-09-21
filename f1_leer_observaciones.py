@@ -16,7 +16,7 @@ def salida_f1(dato):
 			c_cielo = linea[3]
 			visibilidad = linea[4]
 			temperatura = float(linea[5])
-			s_térmica = 'falta'            # ver
+			s_térmica = linea[6]           # ver
 			humedad = linea[7]
 			viento = 'falta'               # ver
 			presion = linea[9].strip()
