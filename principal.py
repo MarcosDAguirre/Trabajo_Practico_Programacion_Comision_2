@@ -1,24 +1,14 @@
 import sys
+from f1_leer_observaciones import salida_f1
+from f3_cantidad_de_ciudades import salida_f3
 
 datos_SMN = sys.argv[1]
 
-salida = {}              # fecha y hora en datetime
-with open (datos_SMN, encoding = 'cp1252') as f:
-    for i in f:
-        linea = i.split(';')
-        print (linea)
-        clave = linea[0].strip()  # clave es una ciudad.
-        fecha = linea[1]
-        hora = linea[2]
-        c_cielo = linea[3]
-        visibilidad = linea[4]
-        temperatura = float(linea[5])
-        s_térmica = linea[6]
-        humedad = linea[7]
-        viento = linea[8]
-        presion = linea[9].strip()
+# funciones importadas
+diccionario = salida_f1(datos_SMN)
+cantidad_ciudades = salida_f3(datos_SMN)
+print (diccionario)	
+print (cantidad_ciudades)
+     
 
-        salida[clave] = {'Fecha':fecha,'Hora':hora,'Condición del cielo':c_cielo,'Visibilidad':visibilidad,'Temperatura':temperatura,'Sensación térmica':s_térmica,'Humedad':humedad,'Viento':viento,'Presión':presion}
-print (salida)        
 
-print (salida['Azul']['Visibilidad'])
