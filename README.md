@@ -1,7 +1,7 @@
-# Proyecto 0
+### Notas del proyecto
 
-Encontrarán en este directorio el enunciado del proyecto.
+Para inicializar la ejecución ejecutar en la consola (a modo de ejemplo):
+~$ python3 analisis_smn.py estado_tiempo20260910.txt  
 
-Fecha de entrega: martes 22 de septiembre
 
-[Link para entrega](https://docs.google.com/spreadsheets/d/1h59NYiwisy13HDq_L8n8x-CoOYWQeIEqozI9pDa4f18)
+

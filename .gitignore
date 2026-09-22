@@ -1,0 +1,12 @@
+# Ignorar carpetas del sistema, caché y respaldos
+__pycache__/
+Respaldo/
+.DS_Store
+Thumbs.db
+
+# Ignorar todos los archivos de texto (.txt)
+*.txt
+
+# Ignorar archivos markdown que no sean el README
+proyecto_0.md
+
