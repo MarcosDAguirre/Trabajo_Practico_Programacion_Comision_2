@@ -1,0 +1,4 @@
+Azul;20-septiembre-2026;12:00;Nublado con tormenta;10 km;13.4;No se calcula; 95;Sur  13;985.7 / 
+ Bahía Blanca;20-septiembre-2026;12:00;Cubierto con lluvia en la hora anterior;15 km;14.8;No se calcula; 93;Noreste  11;990.2 / 
+ Tinogasta;20-septiembre-2026;09:00;Parcialmente nublado con tempestad de polvo;15 km;26.4;24.2; 55;Oeste  44;868.9 / 
+ Olavarría;10-septiembre-2026;09:00;Despejado;15 km;9.1;No se calcula; 87;Calma;995.8 / 
