@@ -1,4 +1,3 @@
-lista = ['Calma','Direcciones']
 
 def salida_f4(diccionario):
     ciudades_incompletas = []
@@ -11,7 +10,7 @@ def salida_f4(diccionario):
             ciudades_incompletas.append(clave)
         if len(valor) != 9:
             ciudades_incompletas.append(clave)
-        if valor['Viento'] in lista:
+        if valor['Viento'] == 'Calma':
             ciudades_incompletas.append(clave)
 
     ciudades_incompletas_conjunto = set(ciudades_incompletas)

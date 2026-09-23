@@ -1,4 +1,3 @@
-lista = ['Calma','Direcciones']
 
 def salida_f2(diccionario):
     ciudades_leidas = {}
@@ -6,9 +5,12 @@ def salida_f2(diccionario):
     for clave,valor in diccionario.items():
         valor_v1 = (valor['Viento']).split()
         try:
-            if valor_v1[0] in lista:
-                direccion_viento = 'Inexistente o valor nulo'
+            if valor_v1[0] == 'Calma':
+                direccion_viento = 'Inexistente'
                 velocidad_viento = '0'
+            elif valor_v1[0] == 'Direcciones':
+                direccion_viento = 'Variable'
+                velocidad_viento = valor_v1[2]
             else:
                 direccion_viento = valor_v1[0]
                 velocidad_viento = valor_v1[1]
