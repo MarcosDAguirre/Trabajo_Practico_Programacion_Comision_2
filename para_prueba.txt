@@ -1,0 +1,11 @@
+ Rosario;10-septiembre-2026;13:00;Parcialmente nublado;15 km;20.4;No se calcula; 47;Noreste  11;1010.2 / 
+ Santa Fe;10-septiembre-2026;13:00;Parcialmente nublado;12 km;22.3;No se calcula; 51;Este  13;1010.8 / 
+ Sunchales;10-septiembre-2026;13:00;Algo nublado;15 km;23.1;No se calcula; 45;Este  14;1001.1 / 
+ Chapelco;10-septiembre-2026;10:00;Nublado;15 km;6.5;4.6; 72;Sur  9;923.2 / 
+ Termas de Rio Hondo;10-septiembre-2026;13:00;Cubierto;15 km;No se calcula; 59;Noreste  7;977.7 / 
+ Santiago del Estero;10-septiembre-2026;13:00;Parcialmente nublado;10 km;22.9;No se calcula; 52;Sudeste  7;987 / 
+ Río Grande B.A.;10-septiembre-2026;13:00;30 km;3.6;-1.4; 54;Oeste  25;1010.4 / 
+ Ushuaia;10-septiembre-2026;13:00;Cubierto con nevada;2.0 km;-1.2;-8.0; 98;Sudoeste  29;1007.6 / 
+ Tucumán;10-septiembre-2026;13:00;Cubierto con humo;8 km;20.9;No se calcula; 49;Oeste  7;958.2 / 
+ Base Belgrano II;12:00;Nublado con ventisca baja;5 km; 50;Sudeste  31;954.6 /
+ Base Carlini;10-septiembre-2026;12:00;Nublado;10 km;-6.7;No se calcula; 75;Calma;1002.5 /  
