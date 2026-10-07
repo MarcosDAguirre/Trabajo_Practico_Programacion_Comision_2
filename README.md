@@ -4,7 +4,7 @@ Para iniciar, ejecutar en la consola (a modo de ejemplo):
 ```bash
 python3 analisis_smn.py estado_tiempo20260910.txt
 ```
-El proyecto contiene 13 funciones en total. Al ejecutar " ~$ python3 analisis_smn.py estado_tiempo20260910.txt analisis_smn.py "; el módulo analisis_smn.py, llama a la función salida_f6 del archivo funciones.py Esta función solicita los parámetros necesarios (empleando int(input('texto'))), para las otras funciones. Luego  ejecuta a cada una de ellas y finalmente imprime en pantalla los valores solicitados según consignas del trabajo práctico.
+El proyecto contiene 13 funciones en total. Al ejecutar " ~$ python3 analisis_smn.py estado_tiempo20260910.txt "; el módulo analisis_smn.py, llama a la función salida_f6 del archivo funciones.py Esta función solicita los parámetros necesarios (empleando int(input('texto'))), para las otras funciones. Luego  ejecuta a cada una de ellas y finalmente imprime en pantalla los valores solicitados según consignas del trabajo práctico.
 Si alguna fila no tiene las columnas completas, esta no es incluída en el diccionario.
 
 El proyecto contiene las siguientes funciones:
