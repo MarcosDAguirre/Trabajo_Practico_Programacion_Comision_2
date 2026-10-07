@@ -13,7 +13,7 @@ def salida_f1(dato: str) -> dict:
             linea = i.split(';')
             ciudad = linea[0].strip()
             if len(linea) == 10:
-                fecha_y_hora = [aux_fecha_y_hora(linea)]
+                fecha_y_hora = aux_fecha_y_hora(linea)
                 c_cielo = linea[3]
                 visibilidad = linea[4]
                 temperatura = float(linea[5])
