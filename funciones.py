@@ -119,15 +119,17 @@ def salida_f6() -> None:
     # Imprime por pantalla el resumen con todas las características solicitadas.
     datos_SMN = sys.argv[1]
     par_tipo = int(input('Para la funcion f5 eliga tipo escribiendo: 1 (para temperatura) o 2 (para viento): '))
-    par_sentido = int(input('Para la funcion f5 eliga tipo de orden escribiendo: 3 (para ascendente) o 4 (para descendente): '))
+    par_sentido = int(input('Para la funcion f5 (Devuelve las n ciudades ordenadas según campo, de mayor a menor o al revés), eliga tipo de orden escribiendo: 3 (para ascendente) o 4 (para descendente): '))
     par_cantidad = int(input('Para la funcion f5 ingrese la cantidad de ciudades con un numero entero: '))
+    par_cantidad_temperatura = int(input('Para la funcion f7 (Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima), ingrese la cantidad de ciudades con un numero entero: '))
+    par_cantidad_viento = int(input('Para la funcion f8 (Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento), ingrese la cantidad de ciudades con un numero entero: '))
     diccionario = salida_f1(datos_SMN)
     viento = salida_f2(diccionario)
     cantidad_ciudades_leidas = salida_f3(diccionario)
     cantidad_ciudades_completas = salida_f4(diccionario)
     top_n_ciudades = salida_f5(diccionario,par_tipo,par_cantidad,par_sentido)
-    ciudades_temp = salida_f7(diccionario)
-    ciudades_vel = salida_f8(diccionario)
+    ciudades_temp = salida_f7(diccionario, par_cantidad_temperatura)
+    ciudades_vel = salida_f8(diccionario, par_cantidad_viento)
     faltan_campos = salida_f9(datos_SMN)
     faltan_datos_en_columnas = salida_f10(datos_SMN)     
     print('=' * 197 + '\nf6_mostrar_resumen')
@@ -151,21 +153,21 @@ def salida_f6() -> None:
     print (json.dumps(faltan_datos_en_columnas, indent = 4, ensure_ascii = False))
     print ('=' * 197) 
 
-def salida_f7(diccionaro:dict) -> dict:
-    #Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima. Nota: n = 5
+def salida_f7(diccionaro:dict, cantidad: int) -> dict:
+    #Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima.
     temperaturas = []
     for clave,valor in diccionaro.items():
         valor_temperatura = valor['Temperatura']
         temperaturas.append((valor_temperatura,clave))
-    return {'Temperaturas_minimas':(sorted(temperaturas))[:5],'Temperaturas_maximas':((sorted(temperaturas))[::-1])[:5]}
+    return {'Temperaturas_minimas':(sorted(temperaturas))[:cantidad],'Temperaturas_maximas':((sorted(temperaturas))[::-1])[:cantidad]}
 
-def salida_f8(diccionario: dict) -> dict:
-    # Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento. Nota: n = 5
+def salida_f8(diccionario: dict, cantidad: int) -> dict:
+    # Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento.
     velocidades_viento = []
     for clave,valor in diccionario.items():
         valor_velocidad_viento = valor['Velocidad_viento']
         velocidades_viento.append((valor_velocidad_viento,clave))
-    return {'Velocidades_minimas_viento':(sorted(velocidades_viento))[:5],'Velocidades_maximas_viento':((sorted(velocidades_viento))[::-1])[:5]}
+    return {'Velocidades_minimas_viento':(sorted(velocidades_viento))[:cantidad],'Velocidades_maximas_viento':((sorted(velocidades_viento))[::-1])[:cantidad]}
 
 def salida_f9(dato: str) -> dict:
     # Muestra la cantidad de datos faltantes por campo, y en qué estaciones ocurre. 'No se calcula' en Sensación Térmica se considera dato faltante'
