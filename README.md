@@ -42,9 +42,9 @@ Devuelve las n (por parámetro) ciudades ordenadas según 'campo', de mayor a me
 ### salida_f6:
 Imprime por pantalla las características solicitadas.
 ### salida_f7:
-Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima. Nota: n = 5
+Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima.
 ### salida_f8:
-Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento. Nota: n = 5
+Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento.
 ### salida_f9:
  Muestra la cantidad de datos faltantes por campo, y en qué estaciones ocurre. 'No se calcula' en Sensación Térmica se considera dato faltante'."Nota" : lista_de_campos: 'Fecha','Hora','Condicion_del_cielo','Visibilidad','Temperatura','Sensacion_termica','Humedad','Viento','Presion'. Calma se toma como dato presente (Direccion inexistente y velocidad del viento 0).
 ### salida_f10:
