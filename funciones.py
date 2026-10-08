@@ -118,11 +118,14 @@ def salida_f5(diccionario: dict,tipo: int,cantidad: int,sentido: int) -> list:  
 def salida_f6() -> None:
     # Imprime por pantalla el resumen con todas las características solicitadas.
     datos_SMN = sys.argv[1]
+    print ('La funcion f5, devuelve las [n] ciudades ordenadas según campo (temperatura o velocidad del viento), de mayor a menor o al revés.')
     par_tipo = int(input('Para la funcion f5 eliga tipo escribiendo: 1 (para temperatura) o 2 (para viento): '))
-    par_sentido = int(input('Para la funcion f5 (Devuelve las n ciudades ordenadas según campo, de mayor a menor o al revés), eliga tipo de orden escribiendo: 3 (para ascendente) o 4 (para descendente): '))
-    par_cantidad = int(input('Para la funcion f5 ingrese la cantidad de ciudades con un numero entero: '))
-    par_cantidad_temperatura = int(input('Para la funcion f7 (Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima), ingrese la cantidad de ciudades con un numero entero: '))
-    par_cantidad_viento = int(input('Para la funcion f8 (Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento), ingrese la cantidad de ciudades con un numero entero: '))
+    par_sentido = int(input('Para la funcion f5 , eliga tipo de orden escribiendo: 3 (para ascendente) o 4 (para descendente): '))
+    par_cantidad = int(input('Para la funcion f5 ingrese la cantidad de [n] ciudades con un numero entero: '))
+    print ('La funcion f7, devuelve la/s ciudad(es)[n] con la temperatura máxima y con la temperatura mínima.')
+    par_cantidad_temperatura = int(input('Para la funcion f7, ingrese la cantidad de ciudades [n] con un numero entero: '))
+    print ('La funcion f8, devuelve la/s ciudad(es)[n] con velocidades máximas y mínimas de viento.')
+    par_cantidad_viento = int(input('Para la funcion f8, ingrese la cantidad de ciudades [n] con un numero entero: '))
     diccionario = salida_f1(datos_SMN)
     viento = salida_f2(diccionario)
     cantidad_ciudades_leidas = salida_f3(diccionario)
@@ -133,7 +136,7 @@ def salida_f6() -> None:
     faltan_campos = salida_f9(datos_SMN)
     faltan_datos_en_columnas = salida_f10(datos_SMN)     
     print('=' * 197 + '\nf6_mostrar_resumen')
-    print ('=' * 197 + '\nf1_leer_observaciones:')
+    print ('=' * 197 + '\nf1_leer_observaciones:   (Nota: Solo muestra las ciudades que tengan todas las columnas)')
     print (diccionario)
     print ("=" * 197 + '\nf2_separar_viento:') 
     print (json.dumps(viento, indent = 4, ensure_ascii = False))
