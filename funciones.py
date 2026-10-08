@@ -2,7 +2,7 @@ import sys
 import json
 from datetime import date, datetime , timedelta
 
-def salida_f1(dato: list) -> dict:
+def f1(dato: list) -> dict:
     # Lee la lista con datos de observaciones del SMN y devuelve un diccionario
     # {ciudad: datos}, con los nombres de ciudad limpios y el campo de viento
     # ya separado en dirección y velocidad."""
@@ -34,7 +34,7 @@ def salida_f1(dato: list) -> dict:
                     'Presión':presion}             
     return salida
 
-def salida_f2(diccionario: dict) -> dict:
+def f2(diccionario: dict) -> dict:
     # Convierte un campo de viento como 'Norte  3' en (direccion, velocidad).
     # Contempla el caso 'Calma' (sin velocidad numérica)
     ciudades_leidas = {}
@@ -53,7 +53,7 @@ def salida_f2(diccionario: dict) -> dict:
         ciudades_leidas[clave] = {'Direccion_viento':direccion_viento,'Velocidad_viento':velocidad_viento}
     return ciudades_leidas	
 
-def salida_f3(diccionario: dict) -> dict:
+def f3(diccionario: dict) -> dict:
     # Devuelve la cantidad total de ciudades leídas.
     ciudades_leidas = []
     contador = 0
@@ -66,7 +66,7 @@ def salida_f3(diccionario: dict) -> dict:
     else:
         return "Error en cálculo de ciudades_leidas"
 
-def salida_f4(diccionario:dict) -> dict:
+def f4(diccionario:dict) -> dict:
     # Devuelve la cantidad de ciudades sin ningún dato faltante.
     ciudades_incompletas = []
     cantidad_de_ciudades = len(diccionario)
@@ -87,7 +87,7 @@ def salida_f4(diccionario:dict) -> dict:
     return {'Cantidad_ciudades_completas':cantidad_completas,'Ciudades_completas':ciudades_completas}
 
 
-def salida_f5(diccionario: dict,tipo: int,cantidad: int,sentido: int) -> list:          # 1 Temperatura / 2 Viento / 3 Ascendente / 4 Descendente
+def f5(diccionario: dict,tipo: int,cantidad: int,sentido: int) -> list:          # 1 Temperatura / 2 Viento / 3 Ascendente / 4 Descendente
     # Devuelve las n (por parámetro) ciudades ordenadas según 'campo', de mayor a menor (o al revés si descendente=False), 
     # en una lista. Reutilizable para temperatura y viento.
     salida = []
@@ -114,49 +114,52 @@ def salida_f5(diccionario: dict,tipo: int,cantidad: int,sentido: int) -> list:  
         lista_1 = ((sorted(salida))[::-1])
     return (lista_1[:cantidad])       
 
-def salida_f6() -> None:
-        # Imprime por pantalla el resumen con todas las características solicitadas.
-        with open (sys.argv[1], encoding = 'cp1252') as f:
-            datos_SMN = [i for i in f]
-        print ('La funcion f5, devuelve las [n] ciudades ordenadas según campo (temperatura o velocidad del viento), de mayor a menor o al revés.')
-        par_tipo = int(input('Para la funcion f5 eliga tipo escribiendo: 1 (para temperatura) o 2 (para viento): '))
-        par_sentido = int(input('Para la funcion f5 , eliga tipo de orden escribiendo: 3 (para ascendente) o 4 (para descendente): '))
-        par_cantidad = int(input('Para la funcion f5 ingrese la cantidad de [n] ciudades con un numero entero: '))
-        print ('La funcion f7, devuelve la/s ciudad(es)[n] con la temperatura máxima y con la temperatura mínima.')
-        par_cantidad_temperatura = int(input('Para la funcion f7, ingrese la cantidad de ciudades [n] con un numero entero: '))
-        print ('La funcion f8, devuelve la/s ciudad(es)[n] con velocidades máximas y mínimas de viento.')
-        par_cantidad_viento = int(input('Para la funcion f8, ingrese la cantidad de ciudades [n] con un numero entero: '))
-        diccionario = salida_f1(datos_SMN)
-        viento = salida_f2(diccionario)
-        cantidad_ciudades_leidas = salida_f3(diccionario)
-        cantidad_ciudades_completas = salida_f4(diccionario)
-        top_n_ciudades = salida_f5(diccionario,par_tipo,par_cantidad,par_sentido)
-        ciudades_temp = salida_f7(diccionario, par_cantidad_temperatura)
-        ciudades_vel = salida_f8(diccionario, par_cantidad_viento)
-        faltan_campos = salida_f9(datos_SMN)
-        faltan_datos_en_columnas = salida_f10(datos_SMN)     
-        print('=' * 197 + '\nf6_mostrar_resumen')
-        print ('=' * 197 + '\nf1_leer_observaciones:   (Nota: Solo muestra las ciudades que tengan todas las columnas)')
-        print (diccionario)
-        print ("=" * 197 + '\nf2_separar_viento:') 
-        print (json.dumps(viento, indent = 4, ensure_ascii = False))
-        print ("=" * 197)	
-        print (f'f3_cantidad_de_ciudades:\n{cantidad_ciudades_leidas}')
-        print ("=" * 197)
-        print (f'f4_cantidad_de_ciudades_completas:\n{cantidad_ciudades_completas}')
-        print ("=" * 197)
-        print (f'f5_top_n_de_ciudades:\n {top_n_ciudades}')
-        print ('=' * 197 + '\nf7_ciudades_temperatura:')
-        print (ciudades_temp)
-        print ('=' * 197 + '\nf8_ciudades_viento:')
-        print (ciudades_vel)
-        print ('=' * 197 + '\nf9_ciudades_con_campos_faltantes:') 
-        print (json.dumps(faltan_campos, indent = 4, ensure_ascii = False))
-        print ('=' * 197 + '\nf10_ciudades_con_columnas_incompletas_completas:')
-        print (json.dumps(faltan_datos_en_columnas, indent = 4, ensure_ascii = False))
-        print ('=' * 197)            
+def f6() -> None:
+    # Imprime por pantalla el resumen con todas las características solicitadas.
+    try:
+            with open (sys.argv[1], encoding = 'cp1252') as f:
+                datos_SMN = [i for i in f]
+            print ('La funcion f5, devuelve las [n] ciudades ordenadas según campo (temperatura o velocidad del viento), de mayor a menor o al revés.')
+            par_tipo = int(input('Para la funcion f5 eliga tipo escribiendo: 1 (para temperatura) o 2 (para viento): '))
+            par_sentido = int(input('Para la funcion f5 , eliga tipo de orden escribiendo: 3 (para ascendente) o 4 (para descendente): '))
+            par_cantidad = int(input('Para la funcion f5 ingrese la cantidad de [n] ciudades con un numero entero: '))
+            print ('La funcion f7, devuelve la/s ciudad(es)[n] con la temperatura máxima y con la temperatura mínima.')
+            par_cantidad_temperatura = int(input('Para la funcion f7, ingrese la cantidad de ciudades [n] con un numero entero: '))
+            print ('La funcion f8, devuelve la/s ciudad(es)[n] con velocidades máximas y mínimas de viento.')
+            par_cantidad_viento = int(input('Para la funcion f8, ingrese la cantidad de ciudades [n] con un numero entero: '))
+            Diccionario = f1(datos_SMN)
+            viento = f2(Diccionario)
+            cantidad_ciudades_leidas = f3(Diccionario)
+            cantidad_ciudades_completas = f4(Diccionario)
+            top_n_ciudades = f5(Diccionario,par_tipo,par_cantidad,par_sentido)
+            ciudades_temp = f7(Diccionario, par_cantidad_temperatura)
+            ciudades_vel = f8(Diccionario, par_cantidad_viento)
+            faltan_campos = f9(datos_SMN)
+            faltan_datos_en_columnas = f10(datos_SMN)     
+            print('=' * 197 + '\nf6 Mostrar_resumen')
+            print ('=' * 197 + '\nf1 Leer_observaciones:   (Nota: Solo muestra las ciudades que tengan todas las columnas)')
+            print (Diccionario)
+            print ("=" * 197 + '\nf2 Separar_viento:') 
+            print (json.dumps(viento, indent = 4, ensure_ascii = False))
+            print ("=" * 197)	
+            print (f'f3 Cantidad_de_ciudades:\n{cantidad_ciudades_leidas}')
+            print ("=" * 197)
+            print (f'f4 Cantidad_de_ciudades_completas:\n{cantidad_ciudades_completas}')
+            print ("=" * 197)
+            print (f'f5 Top_n_de_ciudades:\n {top_n_ciudades}')
+            print ('=' * 197 + '\nf7 Ciudades_temperatura:')
+            print (ciudades_temp)
+            print ('=' * 197 + '\nf8 Ciudades_viento:')
+            print (ciudades_vel)
+            print ('=' * 197 + '\nf9 Ciudades_con_campos_faltantes:') 
+            print (json.dumps(faltan_campos, indent = 4, ensure_ascii = False))
+            print ('=' * 197 + '\nf10 Ciudades_con_columnas_incompletas_completas:')
+            print (json.dumps(faltan_datos_en_columnas, indent = 4, ensure_ascii = False))
+            print ('=' * 197)
+    except Exception:
+         print ('Ingrese datos válidos.')            
 
-def salida_f7(diccionaro:dict, cantidad: int) -> dict:
+def f7(diccionaro:dict, cantidad: int) -> dict:
     #Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima.
     temperaturas = []
     for clave,valor in diccionaro.items():
@@ -164,7 +167,7 @@ def salida_f7(diccionaro:dict, cantidad: int) -> dict:
         temperaturas.append((valor_temperatura,clave))
     return {'Temperaturas_minimas':(sorted(temperaturas))[:cantidad],'Temperaturas_maximas':((sorted(temperaturas))[::-1])[:cantidad]}
 
-def salida_f8(diccionario: dict, cantidad: int) -> dict:
+def f8(diccionario: dict, cantidad: int) -> dict:
     # Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento.
     velocidades_viento = []
     for clave,valor in diccionario.items():
@@ -172,7 +175,7 @@ def salida_f8(diccionario: dict, cantidad: int) -> dict:
         velocidades_viento.append((valor_velocidad_viento,clave))
     return {'Velocidades_minimas_viento':(sorted(velocidades_viento))[:cantidad],'Velocidades_maximas_viento':((sorted(velocidades_viento))[::-1])[:cantidad]}
 
-def salida_f9(dato: list) -> dict:
+def f9(dato: list) -> dict:
     # Muestra la cantidad de datos faltantes por campo, y en qué estaciones ocurre. 'No se calcula' en Sensación Térmica se considera dato faltante'
     # lista_de_campos: 'Fecha','Hora','Condicion_del_cielo','Visibilidad','Temperatura','Sensacion_termica','Humedad','Viento','Presion'
     diccionario_incompletas = {}
@@ -233,7 +236,7 @@ def salida_f9(dato: list) -> dict:
                 diccionario_incompletas[lista[0]] = lista_incompleta                                   
     return diccionario_incompletas
 
-def salida_f10(dato: list) -> dict:
+def f10(dato: list) -> dict:
     # Devuelve un diccionario con la cantidad de columnas esperados que no están presentes en alguna línea (según su ciudad). También indica que ciudades tienen  
     # completas sus columnas.
     completas_incompletas = {}
