@@ -3,9 +3,11 @@ import json
 from datetime import date, datetime , timedelta
 
 def f1(dato: list) -> dict:
-    # Lee la lista con datos de observaciones del SMN y devuelve un diccionario
-    # {ciudad: datos}, con los nombres de ciudad limpios y el campo de viento
-    # ya separado en dirección y velocidad."""
+    '''
+    Lee la lista con datos de observaciones del SMN y devuelve un diccionario
+    {ciudad: datos}, con los nombres de ciudad limpios y el campo de viento
+    ya separado en dirección y velocidad."""
+    '''
     meses = {'enero':1,'febrero':2,'marzo':3,'abril':4,'mayo':5,'junio':6,'julio':7,'agosto':8,'septiembre':9,'octubre':10,'noviembre':11,'diciembre':12}
     salida = {}
     for i in dato:
@@ -39,8 +41,10 @@ def f1(dato: list) -> dict:
     return salida
 
 def f2(diccionario: dict) -> dict:
-    # Convierte un campo de viento como 'Norte  3' en (direccion, velocidad).
-    # Contempla el caso 'Calma' (sin velocidad numérica)
+    '''
+    Convierte un campo de viento como 'Norte  3' en (direccion, velocidad).
+    Contempla el caso 'Calma' (sin velocidad numérica)
+    '''
     ciudades_leidas = {}
     contador = 0
     for clave,valor in diccionario.items():
@@ -58,7 +62,9 @@ def f2(diccionario: dict) -> dict:
     return ciudades_leidas	
 
 def f3(diccionario: dict) -> dict:
-    # Devuelve la cantidad total de ciudades leídas.
+    '''
+    Devuelve la cantidad total de ciudades leídas.
+    '''
     ciudades_leidas = []
     contador = 0
     total_ciudades = len(diccionario)
@@ -71,7 +77,9 @@ def f3(diccionario: dict) -> dict:
         return "Error en cálculo de ciudades_leidas"
 
 def f4(diccionario:dict) -> dict:
-    # Devuelve la cantidad de ciudades sin ningún dato faltante.
+    '''
+    Devuelve la cantidad de ciudades sin ningún dato faltante.
+    '''
     ciudades_incompletas = []
     cantidad_de_ciudades = len(diccionario)
     for clave,valor in diccionario.items():
@@ -92,8 +100,10 @@ def f4(diccionario:dict) -> dict:
 
 
 def f5(diccionario: dict,tipo: int,sentido: int,cantidad: int) -> list:          # 1 Temperatura / 2 Viento / 3 Ascendente / 4 Descendente
-    # Devuelve las n (por parámetro) ciudades ordenadas según 'campo', de mayor a menor (o al revés si descendente=False), 
-    # en una lista. Reutilizable para temperatura y viento.
+    '''
+    Devuelve las n (por parámetro) ciudades ordenadas según 'campo', de mayor a menor (o al revés si descendente=False), 
+    en una lista. Reutilizable para temperatura y viento.
+    '''
     salida = []
     lista_1 = []
     for clave,valor in diccionario.items():
@@ -119,7 +129,9 @@ def f5(diccionario: dict,tipo: int,sentido: int,cantidad: int) -> list:         
     return (lista_1[:cantidad])       
 
 def f6() -> None:
-    # Imprime por pantalla las características solicitadas.
+    '''
+    Imprime por pantalla las características solicitadas.
+    '''
     try:
         with open (sys.argv[1], encoding = 'cp1252') as f:
             datos_SMN = [i for i in f]
@@ -138,7 +150,9 @@ def f6() -> None:
          print ('Ingrese datos válidos.')            
 
 def f7(diccionaro:dict, cantidad: int) -> dict:
-    #Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima.
+    '''
+    Devuelve la/s ciudad(es)[:n] con la temperatura máxima y con la temperatura mínima.
+    '''
     temperaturas = []
     for clave,valor in diccionaro.items():
         valor_temperatura = valor['Temperatura']
@@ -146,7 +160,9 @@ def f7(diccionaro:dict, cantidad: int) -> dict:
     return {'Temperaturas_minimas':(sorted(temperaturas))[:cantidad],'Temperaturas_maximas':((sorted(temperaturas))[::-1])[:cantidad]}
 
 def f8(diccionario: dict, cantidad: int) -> dict:
-    # Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento.
+    '''
+    Devuelve la/s ciudad(es)[:n] con velocidades máximas y mínimas de viento.
+    '''
     velocidades_viento = []
     for clave,valor in diccionario.items():
         valor_velocidad_viento = valor['Velocidad_viento']
@@ -154,8 +170,10 @@ def f8(diccionario: dict, cantidad: int) -> dict:
     return {'Velocidades_minimas_viento':(sorted(velocidades_viento))[:cantidad],'Velocidades_maximas_viento':((sorted(velocidades_viento))[::-1])[:cantidad]}
 
 def f9(dato: list) -> dict:
-    # Muestra la cantidad de datos faltantes por campo, y en qué estaciones ocurre. 'No se calcula' en Sensación Térmica se considera dato faltante'
-    # lista_de_campos: 'Fecha','Hora','Condicion_del_cielo','Visibilidad','Temperatura','Sensacion_termica','Humedad','Viento','Presion'
+    '''
+    Muestra la cantidad de datos faltantes por campo, y en qué estaciones ocurre. 'No se calcula' en Sensación Térmica se considera dato faltante'
+    lista_de_campos: 'Fecha','Hora','Condicion_del_cielo','Visibilidad','Temperatura','Sensacion_termica','Humedad','Viento','Presion'
+    '''
     diccionario_incompletas = {}
     for i in dato:
             dato_presente = []
@@ -215,8 +233,10 @@ def f9(dato: list) -> dict:
     return diccionario_incompletas
 
 def f10(dato: list) -> dict:
-    # Devuelve un diccionario con la cantidad de columnas esperados que no están presentes en alguna línea (según su ciudad). También indica que ciudades tienen  
-    # completas sus columnas.
+    '''
+    Devuelve un diccionario con la cantidad de columnas esperados que no están presentes en alguna línea (según su ciudad). También indica que ciudades tienen  
+    completas sus columnas.
+    '''
     completas_incompletas = {}
     con_faltantes = {}
     completas = {}
@@ -232,7 +252,9 @@ def f10(dato: list) -> dict:
     return completas_incompletas
 
 def aux_fecha_y_hora(fila:str) -> str:
-    # Entrega fecha y hora en formato datetime(Y,m,d,H,M)
+    '''
+    Entrega fecha y hora en formato datetime(Y,m,d,H,M)
+    '''
     meses = {'enero':1,'febrero':2,'marzo':3,'abril':4,'mayo':5,'junio':6,'julio':7,'agosto':8,'septiembre':9,'octubre':10,'noviembre':11,'diciembre':12}
     fecha1 = fila[1].split('-')
     hora1= fila[2].split(':')
@@ -240,7 +262,9 @@ def aux_fecha_y_hora(fila:str) -> str:
     return fecha_hora         
 
 def aux_viento(campo:str) -> list:
-    # Devuelve una lista con los datos de direccion y velocidad del viento.
+    '''
+    Devuelve una lista con los datos de direccion y velocidad del viento.
+    '''
     if campo[0] == 'Calma':
         direccion_viento = 'Calma'
         velocidad_viento = 0.0
@@ -253,7 +277,9 @@ def aux_viento(campo:str) -> list:
     return [direccion_viento,velocidad_viento]
 
 def aux_filtro(dato:str) -> int:
-    # Filtra los datos para obtener la cantidad de datos de Temperatura y Sensacion_termica presentes en la fila.
+    '''
+    Filtra los datos para obtener la cantidad de datos de Temperatura y Sensacion_termica presentes en la fila.
+    '''
     contador = 0
     try:
         if type(abs(int(''.join(dato.split('.'))))).__name__ == 'int':
